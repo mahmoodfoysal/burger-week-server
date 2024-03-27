@@ -31,7 +31,11 @@ async function run() {
         // code write here 
         const database = client.db("burger-week");
         const posterCollection = database.collection("poster-image-text");
-        const popularProductCollection = database.collection("popular-product")
+        const popularProductCollection = database.collection("popular-product");
+        const popularSingleItemCollection = database.collection("popular-single-item");
+        const productsCollection = database.collection('products');
+        const eventsCollection = database.collection('events');
+        const reservationCollection = database.collection('reservation');
 
         // all post api write here 
 
@@ -51,6 +55,34 @@ async function run() {
             res.send(result);
         });
 
+        app.post('/popularSingleItem', async(req, res) => {
+            const popularSingleItem = req.body;
+            console.log(popularSingleItem);
+            const result = await popularSingleItemCollection.insertOne(popularSingleItem);
+            res.send(result)
+        });
+
+        app.post('/products', async(req, res) => {
+            const products = req.body;
+            console.log(products);
+            const result = await productsCollection.insertOne(products);
+            res.send(result);
+        });
+
+        app.post('/events', async(req, res) => {
+            const events = req.body;
+            console.log(events);
+            const result = await eventsCollection.insertOne(events);
+            res.send(result);
+        });
+
+        app.post('/reservation', async(req, res) => {
+            const reservation = req.body;
+            console.log(reservation);
+            const result = await reservationCollection.insertOne(reservation);
+            res.send(result);
+        });
+
 
 
         // all get post write here 
@@ -65,6 +97,33 @@ async function run() {
         app.get('/popularProduct', async(req, res) => {
             const getPopularProduct = popularProductCollection.find();
             const result = await getPopularProduct.toArray();
+            res.send(result);
+        });
+
+        app.get('/popularSingleItem', async(req, res) => {
+            const getPopularSingleItem = popularSingleItemCollection.find();
+            const result = await getPopularSingleItem.toArray();
+            res.send(result);
+        });
+
+        app.get('/products', async(req, res) => {
+            const getProducts = productsCollection.find();
+            console.log(getProducts);
+            const result = await getProducts.toArray()
+            res.send(result);
+        });
+
+        app.get('/events', async(req, res) => {
+            const getEvents = eventsCollection.find();
+            console.log(getEvents);
+            const result = await getEvents.toArray();
+            res.send(result);
+        });
+
+        app.get('/reservation', async(req, res) => {
+            const getReservation = reservationCollection.find();
+            console.log(getReservation);
+            const result = await getReservation.toArray();
             res.send(result);
         })
 
