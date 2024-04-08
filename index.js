@@ -36,6 +36,7 @@ async function run() {
         const productsCollection = database.collection('products');
         const eventsCollection = database.collection('events');
         const reservationCollection = database.collection('reservation');
+        const ordersCollection = database.collection('orders');
 
         // all post api write here 
 
@@ -82,6 +83,13 @@ async function run() {
             const result = await reservationCollection.insertOne(reservation);
             res.send(result);
         });
+
+        app.post('/orders', async(req, res) => {
+            const orders = req.body;
+            console.log(orders);
+            const result = await ordersCollection.insertOne(orders);
+            res.send(result);
+        })
 
 
 
