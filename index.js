@@ -43,7 +43,7 @@ async function run() {
         // poster upload api 
         app.post('/poster', async(req, res) => {
             const newPoster = req.body;
-            console.log(newPoster);
+            // console.log(newPoster);
             const result = await posterCollection.insertOne(newPoster);
             res.send(result);
         });
@@ -51,42 +51,42 @@ async function run() {
         // popular post upload api 
         app.post('/popularProduct', async(req, res) => {
             const popularProduct = req.body;
-            console.log(popularProduct);
+            // console.log(popularProduct);
             const result = await popularProductCollection.insertOne(popularProduct);
             res.send(result);
         });
 
         app.post('/popularSingleItem', async(req, res) => {
             const popularSingleItem = req.body;
-            console.log(popularSingleItem);
+            // console.log(popularSingleItem);
             const result = await popularSingleItemCollection.insertOne(popularSingleItem);
             res.send(result)
         });
 
         app.post('/products', async(req, res) => {
             const products = req.body;
-            console.log(products);
+            // console.log(products);
             const result = await productsCollection.insertOne(products);
             res.send(result);
         });
 
         app.post('/events', async(req, res) => {
             const events = req.body;
-            console.log(events);
+            // console.log(events);
             const result = await eventsCollection.insertOne(events);
             res.send(result);
         });
 
         app.post('/reservation', async(req, res) => {
             const reservation = req.body;
-            console.log(reservation);
+            // console.log(reservation);
             const result = await reservationCollection.insertOne(reservation);
             res.send(result);
         });
 
         app.post('/orders', async(req, res) => {
             const orders = req.body;
-            console.log(orders);
+            // console.log(orders);
             const result = await ordersCollection.insertOne(orders);
             res.send(result);
         })
@@ -116,21 +116,21 @@ async function run() {
 
         app.get('/products', async(req, res) => {
             const getProducts = productsCollection.find();
-            console.log(getProducts);
+            // console.log(getProducts);
             const result = await getProducts.toArray()
             res.send(result);
         });
 
         app.get('/events', async(req, res) => {
             const getEvents = eventsCollection.find();
-            console.log(getEvents);
+            // console.log(getEvents);
             const result = await getEvents.toArray();
             res.send(result);
         });
 
         app.get('/reservation', async(req, res) => {
             const getReservation = reservationCollection.find();
-            console.log(getReservation);
+            // console.log(getReservation);
             const result = await getReservation.toArray();
             res.send(result);
         })
